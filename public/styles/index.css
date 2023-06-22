@@ -1,0 +1,72 @@
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Global layout stuff
+ */
+body {
+  color: #545149;
+  background-color: #16140d;
+  /*background-color: #f4f1ec;*/
+  font-size: 24px;
+}
+
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+*/
+nav {
+  position: fixed;
+  --nav-height: 100px;
+  height: var(--nav-height);
+  width: 100%;
+  background-color: #4056a1;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+nav span {
+  font-family: "Bungee", cursive;
+  font-size: 32px;
+  align-self: center;
+}
+
+#nav-tweet {
+  align-self: flex-end;
+}
+
+#nav-new-tweet1 {
+  font-family: "source sans 3", cursive;
+  font-style: normal;
+  font-weight: 600;
+}
+
+#nav-new-tweet2 {
+  font-family: "source sans 3", cursive;
+  font-style: normal;
+}
+
+#nav-arrow {
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  height: 400px;
+  width: 100%;
+  padding-top: var(--nav-height);
+  background-color: darkgoldenrod;
+}
