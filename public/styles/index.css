@@ -1,33 +1,6 @@
-/*
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- * https://css-tricks.com/international-box-sizing-awareness-day/
- * Do not modify these two selectors, please
- */
-html {
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-/*
- * Global layout stuff
- */
-body {
-  color: #545149;
-  background-color: #16140d;
-  /*background-color: #f4f1ec;*/
-  font-size: 24px;
-}
-
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
-*/
 nav {
   position: fixed;
-  --nav-height: 100px;
-  height: var(--nav-height);
+  height: 96px;
   width: 100%;
   background-color: #4056a1;
   color: #ffffff;
@@ -57,6 +30,7 @@ nav span {
 #nav-new-tweet2 {
   font-family: "source sans 3", cursive;
   font-style: normal;
+  font-weight: 300;
 }
 
 #nav-arrow {
@@ -65,8 +39,54 @@ nav span {
 }
 
 header {
-  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(352px + 5rem);
   width: 100%;
-  padding-top: var(--nav-height);
+  padding-top: calc(1rem + 96px);
   background-color: darkgoldenrod;
+  background-image: url("../images/background-image.png");
 }
+
+h2 {
+  margin: 0px;
+  font-family: "source sans 3", cursive;
+  font-style: normal;
+  color: #ffffff;
+}
+
+h-firstname {
+  font-weight: 600;
+}
+
+h-lastname {
+  font-weight: 300;
+}
+
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Global layout stuff
+ */
+body {
+  color: #545149;
+  background-color: #16140d;
+  /*background-color: #f4f1ec;*/
+  font-size: 24px;
+}
+
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+*/

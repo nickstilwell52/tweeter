@@ -1,6 +1,26 @@
+@use 'variables';
 header {
-  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(variables.$nav-height + 256px + 5rem);
   width: 100%;
-  padding-top: var(--nav-height);
+  padding-top: calc(1rem + variables.$nav-height);
   background-color: darkgoldenrod;
+  background-image: url('../images/background-image.png');
+}
+
+h2 {
+  margin: 0px;
+  font-family: 'source sans 3', cursive;
+  font-style: normal;
+  color: #ffffff;
+}
+
+h-firstname {
+  font-weight: 600;
+}
+
+h-lastname {
+  font-weight: 300;
 }

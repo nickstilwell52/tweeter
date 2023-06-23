@@ -1,7 +1,7 @@
+@use 'variables';
 nav {
   position: fixed;
-  --nav-height: 100px;
-  height: var(--nav-height);
+  height: variables.$nav-height;
   width: 100%;
   background-color: #4056a1;
   color: #ffffff;
@@ -30,6 +30,7 @@ nav span {
 #nav-new-tweet2 {
   font-family: 'source sans 3', cursive;
   font-style: normal;
+  font-weight: 300;
 }
 #nav-arrow {
   display: flex;
