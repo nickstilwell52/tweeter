@@ -47,6 +47,10 @@
   font-family: 'Bungee', cursive;
 }
 
+#tweet-buttoncounter [changeColor="red"] {
+  color:#ff0000
+}
+
 #tweet-buttoncounter button {
   padding: 3px 6px 1px 6px;
   background-color: #4056a1;
