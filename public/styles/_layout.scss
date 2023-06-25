@@ -19,7 +19,7 @@ html {
 
 body {
   color: #545149;
-  background-color: #16140d;
+  background-color: #7e7e7e;
   /*background-color: #f4f1ec;*/
   font-size: 24px;
 }
@@ -27,3 +27,12 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
 */
+
+main {
+  display: flex;
+}
+
+main >* {
+  padding-left: 5%;
+  padding-right: 5%;
+}

@@ -15,11 +15,6 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/index.css" type="text/css" />
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
   </head>
 
   <body>
@@ -45,6 +40,25 @@
     </header>
   
     <!-- Page-specific (main) content here -->
-    <main class="container"></main>
+    <main class="container">
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form action="/tweets" method="POST">
+          <div id="tweet-textareaWrap">
+            <label for="tweet-textarea">What are you humming about?</label>
+            <textarea name="text" id="tweet-textarea"></textarea>
+          </div>
+          <div id="tweet-buttoncounter">
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-textarea">140</output>
+          </div>
+        </form>
+      </section>      
+    </main>
+        <!-- External JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- App JS -->
+        <script type="text/javascript" src="/scripts/client.js"></script>
   </body>
 </html>
