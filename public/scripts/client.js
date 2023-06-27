@@ -4,6 +4,65 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+let $tweetsArray = [];
+
+
+const getTweets = function(callback) {
+  $.get("/tweets", function(data) {
+    $tweetsArray = data;
+    callback($tweetsArray);
+  })
+}
+
+const loadTweets = function() {
+  renderTweets($tweetsArray);
+}
+
+const loadTweet = function() {
+  const newTweet = $tweetsArray.slice(-1)
+  renderTweets(newTweet);
+}
+
+const renderTweets = function(tweets) {
+  tweets.forEach(tweet => {
+    const $tweet = createTweetElement(tweet);
+    $('.tweets-container').append($tweet);
+  });
+}
+
+const tweetErrorTest = function(tweet) {
+  const tweetText = tweet.split('text=', 2)[1]
+  if (tweetText.length < 1) {
+    return 'tweet too short';
+  }
+  if (tweetText.length > 140) {
+    return 'tweet too long'
+  }
+  return false;
+}
+
+
+const createSubmitHandler = function() {
+  $('#new-tweet-submit').on("submit", function(event) {
+    event.preventDefault();
+    const $tweet = $('#new-tweet-submit').serialize()
+    const tweetErr = tweetErrorTest($tweet);
+    if (!tweetErr) {
+      $.post("/tweets", $tweet, function() {
+        getTweets(loadTweet);
+      })
+    } else {
+      alert(`${tweetErr}`)
+    }
+  })
+}
+
+const escapeEvilTweet = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = function(tweet) {
   const $tweet = $(`
     <div class="tweet-wrapper">
@@ -16,10 +75,10 @@ const createTweetElement = function(tweet) {
           </div>
         </header>
           <p>
-            ${tweet.content.text}
+            ${escapeEvilTweet(tweet.content.text)}
           </p>
         <footer class="tweet">
-          <div class="tweet-date">${tweet.created_at}</div>
+          <div class="tweet-date">${timeago.format(tweet.created_at)}</div>
           <div class="tweet-actions">
             <i class="fa-solid fa-flag"></i>
             <i class="fa-solid fa-retweet"></i>
@@ -30,40 +89,10 @@ const createTweetElement = function(tweet) {
     </div>
   `);
   return $tweet;
-};
+}
 
-const renderTweets = function(tweets) {
-  tweets.forEach(tweet => {
-    const $tweet = createTweetElement(tweet);
-    $('.tweets-container').append($tweet);
-  });
-};
 
 $(document).ready(() => {
-  renderTweets(tweetData);
+  getTweets(loadTweets);
+  createSubmitHandler();
 });
-
-const tweetData = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1687648762644
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1687735162644
-  }
-];
