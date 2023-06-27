@@ -9,7 +9,7 @@ const addCharCountEventHandler = () => {
     $(theCounter).attr("changeColor", counterColor);
   });
   console.log('added CharCountEventHandler');
-}
+};
 
 $(document).ready(() => {
   addCharCountEventHandler();
