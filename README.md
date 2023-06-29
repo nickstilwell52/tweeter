@@ -2,8 +2,8 @@
 
 A simple single-page AJAX-based Twitter clone that uses jQuery, HTML and css/scss.
 
-<video src='docs/noeviltweets.mp4'></video>
-<video src='docs/responsivedesign.mp4'></video>
+https://github.com/nickstilwell52/tweeter/assets/128740302/17edc65e-1cfd-47d8-846a-e7824bc14824
+https://github.com/nickstilwell52/tweeter/assets/128740302/e954f77c-7158-4fac-92ea-548e461ab2bd
 
 ## Getting Started
 
