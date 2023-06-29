@@ -45,19 +45,25 @@ const tweetErrorTest = function(tweet) {
   };
 
   const tweetText = tweet.split('text=', 2)[1];
+  const tweetTextLength = $("#tweet-textarea").val().length;//unsanitized length
 
-  if (tweetText.length < 1) {
+  if (tweetTextLength < 1) {
     $('#tweet-error').html(createErr('forgot the tweet'));
     createAnim();
     return true;
   }
-  if (tweetText.length > 140) {
+  if (tweetTextLength > 140) {
     $('#tweet-error').html(createErr('char limit exceeded'));
     createAnim();
     return true;
   }
   if (tweetText.includes("world")) { //wonderful use of MDN example
     $('#tweet-error').html(createErr('no lame tweets'));
+    createAnim();
+    return true;
+  }
+  if (tweetText.includes(".empty()")) { //wonderful use of MDN example
+    $('#tweet-error').html(createErr('no evil tweets'));
     createAnim();
     return true;
   }
