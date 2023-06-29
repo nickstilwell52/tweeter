@@ -1,6 +1,6 @@
 .new-tweet {
   display: flex;
-  padding-top: 0.25rem;
+  padding-top: 0px;
   padding-bottom: 0.5rem;
   width: 100%;
   flex-direction: column;
@@ -14,6 +14,10 @@
   font-style: normal;
   font-weight: 600;
   color: inherit;
+}
+
+#tweet-textareaWrap div {
+  margin-bottom: 4px;
 }
 
 .new-tweet >* {
@@ -39,15 +43,50 @@
   border-bottom-width: 6px;
 }
 
+
+.new-tweet footer {
+  display: flex;
+}
+
+
 #tweet-buttoncounter {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
   padding-top: 6px;
-  box-sizing: border-box;
   font-family: 'Bungee', cursive;
 }
 
-#tweet-buttoncounter [changeColor="red"] {
+.counter {
+  display: flex;
+  width: fit-content;
+  padding-top: 6px;
+  justify-content: flex-end;
+  font-family: 'Bungee', cursive;
+}
+
+#tweet-errorWrap {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+}
+
+#tweet-error {
+  display: flex;
+  white-space: nowrap;
+  align-self: center;
+  align-items: center;
+  color:#ff0000;
+  font-family: 'source sans 3', cursive;
+  font-weight: 600;
+  word-break: keep-all;
+  border-style: solid;
+  border-color: #ff0000;
+  padding: 0px 4px;
+  border-width: 1px;
+}
+
+.counter[changeColor="red"] {
   color:#ff0000
 }
 
@@ -55,5 +94,21 @@
   padding: 3px 6px 1px 6px;
   background-color: #4056a1;
   border-style: none;
+  margin-right: 4px;
   color: #ffffff;
 }
+
+@media only screen and (max-width: 599px) {
+  #tweet-textareaWrap div {
+    margin-top: 0.5rem;
+  }
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+  #tweet-textareaWrap div {
+    margin-top: 0.5rem;
+  }
+}
+
+

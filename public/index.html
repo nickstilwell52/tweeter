@@ -42,17 +42,23 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
         <form id="new-tweet-submit" action="/tweets" method="POST">
           <div id="tweet-textareaWrap">
-            <label for="tweet-textarea">What are you humming about?</label>
+            <div>
+              <label for="tweet-textarea">What are you humming about?</label>
+            </div>
             <textarea name="text" id="tweet-textarea"></textarea>
           </div>
+          <footer>
           <div id="tweet-buttoncounter">
             <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-textarea" changeColor="false">140</output>
+            <div id="tweet-errorWrap">
+              <div id="tweet-error"><i class="fa-solid fa-triangle-exclamation"></i>testerror<i class="fa-solid fa-triangle-exclamation"></i></div>
+            </div>
           </div>
+          <output name="counter" class="counter" for="tweet-textarea" changeColor="false">140</output>
         </form>
+      </footer>
       </section>
       <section class="tweets-container">
      

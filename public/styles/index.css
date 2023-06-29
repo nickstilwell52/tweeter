@@ -16,8 +16,7 @@ html {
  */
 body {
   color: #545149;
-  background-color: #7e7e7e;
-  /*background-color: #f4f1ec;*/
+  background-color: #faf5e5;
   font-size: 24px;
 }
 
@@ -30,10 +29,19 @@ main {
 }
 
 main > * {
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 3vw;
+  padding-right: 3vw;
 }
 
+@media only screen and (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+  main {
+    padding-top: calc(96px + 4vh);
+    width: 100%;
+  }
+}
 nav {
   position: fixed;
   height: 96px;
@@ -74,6 +82,17 @@ nav span {
   justify-content: center;
 }
 
+@media only screen and (max-width: 599px) {
+  nav {
+    display: none;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+  nav {
+    position: absolute;
+    background-color: unset;
+  }
+}
 header:not(.tweet) {
   display: flex;
   flex-direction: column;
@@ -100,9 +119,34 @@ h-lastname {
   font-weight: 300;
 }
 
+@media only screen and (max-width: 599px) {
+  header:not(.tweet) {
+    padding-top: 1rem;
+    height: calc(256px + 5rem);
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+  header:not(.tweet) {
+    padding-top: 1rem;
+    height: calc(256px + 5rem);
+  }
+}
+@media only screen and (min-width: 1024px) {
+  header:not(.tweet) {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin-top: calc(96px + 4vh);
+    margin-left: 3vw;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+    max-width: 400px;
+  }
+}
 .new-tweet {
   display: flex;
-  padding-top: 0.25rem;
+  padding-top: 0px;
   padding-bottom: 0.5rem;
   width: 100%;
   flex-direction: column;
@@ -115,6 +159,10 @@ h-lastname {
   font-style: normal;
   font-weight: 600;
   color: inherit;
+}
+
+#tweet-textareaWrap div {
+  margin-bottom: 4px;
 }
 
 .new-tweet > * {
@@ -140,15 +188,49 @@ h-lastname {
   border-bottom-width: 6px;
 }
 
+.new-tweet footer {
+  display: flex;
+}
+
 #tweet-buttoncounter {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
   padding-top: 6px;
-  box-sizing: border-box;
   font-family: "Bungee", cursive;
 }
 
-#tweet-buttoncounter [changeColor=red] {
+.counter {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-top: 6px;
+  justify-content: flex-end;
+  font-family: "Bungee", cursive;
+}
+
+#tweet-errorWrap {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+}
+
+#tweet-error {
+  display: flex;
+  white-space: nowrap;
+  align-self: center;
+  align-items: center;
+  color: #ff0000;
+  font-family: "source sans 3", cursive;
+  font-weight: 600;
+  word-break: keep-all;
+  border-style: solid;
+  border-color: #ff0000;
+  padding: 0px 4px;
+  border-width: 1px;
+}
+
+.counter[changeColor=red] {
   color: #ff0000;
 }
 
@@ -156,11 +238,22 @@ h-lastname {
   padding: 3px 6px 1px 6px;
   background-color: #4056a1;
   border-style: none;
+  margin-right: 4px;
   color: #ffffff;
 }
 
+@media only screen and (max-width: 599px) {
+  #tweet-textareaWrap div {
+    margin-top: 0.5rem;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+  #tweet-textareaWrap div {
+    margin-top: 0.5rem;
+  }
+}
 .tweets-container {
-  background-color: #c0b9a1;
+  background-color: #faf5e5;
 }
 
 .tweet-wrapper {
@@ -177,11 +270,14 @@ article.tweet {
 }
 
 article.tweet:hover {
-  box-shadow: 4px 4px black;
+  box-shadow: 4px 4px 4px #1a1917;
 }
 
 article.tweet > * {
   width: 100%;
+  font-family: "source sans 3", cursive;
+  font-style: normal;
+  font-weight: 600;
 }
 
 article.tweet header .user-info {
@@ -199,6 +295,7 @@ article.tweet .user-handle {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  opacity: 0.5;
 }
 
 article.tweet footer {

@@ -11,53 +11,76 @@ const getTweets = function(callback) {
   $.get("/tweets", function(data) {
     $tweetsArray = data;
     callback($tweetsArray);
-  })
-}
+  });
+};
 
 const loadTweets = function() {
   renderTweets($tweetsArray);
-}
+};
 
 const loadTweet = function() {
-  const newTweet = $tweetsArray.slice(-1)
+  const newTweet = $tweetsArray.slice(-1);
   renderTweets(newTweet);
-}
+};
 
 const renderTweets = function(tweets) {
   tweets.forEach(tweet => {
     const $tweet = createTweetElement(tweet);
     $('.tweets-container').append($tweet);
   });
-}
+};
 
 const tweetErrorTest = function(tweet) {
-  const tweetText = tweet.split('text=', 2)[1]
+  if (typeof tweet === 'undefined') {
+    $('#tweet-errorWrap').css({"opacity": 0, "max-width": 0});//hide on docready
+    return;
+  }
+  const createErr = function(errMsg) {
+    const errIcon = '<i class="fa-solid fa-triangle-exclamation"></i>';
+    return `${errIcon}&nbsp${errMsg}&nbsp${errIcon}`;
+  };
+  const createAnim = function() {
+    const $newWidth = ($('#tweet-error').width()) + 10;
+    $('#tweet-errorWrap').css({"opacity": 0, "max-width": 0}).animate({"opacity": 1, "max-width": $newWidth});
+  };
+
+  const tweetText = tweet.split('text=', 2)[1];
+
   if (tweetText.length < 1) {
-    return 'tweet too short';
+    $('#tweet-error').html(createErr('forgot the tweet'));
+    createAnim();
+    return true;
   }
   if (tweetText.length > 140) {
-    return 'tweet too long'
+    $('#tweet-error').html(createErr('char limit exceeded'));
+    createAnim();
+    return true;
   }
+  if (tweetText.includes("world")) { //wonderful use of MDN example
+    $('#tweet-error').html(createErr('no lame tweets'));
+    createAnim();
+    return true;
+  }
+  // happy path
+  $('#tweet-errorWrap').css({"opacity": 0, "width": 0}).animate({"width": '100%'}, 500);
   return false;
-}
+};
 
 
 const createSubmitHandler = function() {
   $('#new-tweet-submit').on("submit", function(event) {
     event.preventDefault();
-    const $tweet = $('#new-tweet-submit').serialize()
+    const $tweet = $('#new-tweet-submit').serialize();
     const tweetErr = tweetErrorTest($tweet);
     if (!tweetErr) {
       $.post("/tweets", $tweet, function() {
         getTweets(loadTweet);
-      })
-    } else {
-      alert(`${tweetErr}`)
+      });
     }
-  })
-}
+  });
+};
 
-const escapeEvilTweet = function (str) {
+const escapeEvilTweet = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -89,10 +112,11 @@ const createTweetElement = function(tweet) {
     </div>
   `);
   return $tweet;
-}
+};
 
 
 $(document).ready(() => {
   getTweets(loadTweets);
   createSubmitHandler();
+  tweetErrorTest();
 });

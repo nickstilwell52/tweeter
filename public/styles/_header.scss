@@ -24,3 +24,30 @@ h-firstname {
 h-lastname {
   font-weight: 300;
 }
+
+@media only screen and (max-width: 599px) {
+  header:not(.tweet) {
+    padding-top: 1rem;
+    height: calc(256px + 5rem);
+  }
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+  header:not(.tweet) {
+    padding-top: 1rem;
+    height: calc(256px + 5rem);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  header:not(.tweet) {
+    height: fit-content;
+    margin-top: calc(variables.$nav-height + 4vh);
+    margin-left: 3vw;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-width: fit-content;
+    max-width: 400px;
+  }
+}
