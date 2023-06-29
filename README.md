@@ -2,8 +2,9 @@
 
 A simple single-page AJAX-based Twitter clone that uses jQuery, HTML and css/scss.
 
-https://github.com/nickstilwell52/tweeter/assets/128740302/17edc65e-1cfd-47d8-846a-e7824bc14824
-https://github.com/nickstilwell52/tweeter/assets/128740302/e954f77c-7158-4fac-92ea-548e461ab2bd
+https://github.com/nickstilwell52/tweeter/assets/128740302/17edc65e-1cfd-47d8-846a-e7824bc14824.mp4
+
+https://github.com/nickstilwell52/tweeter/assets/128740302/e954f77c-7158-4fac-92ea-548e461ab2bd.mp4
 
 ## Getting Started
 
