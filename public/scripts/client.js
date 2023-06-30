@@ -7,24 +7,16 @@
 let $tweetsArray = [];
 
 
-const getTweets = function(callback) {
+const getTweets = function() {
   $.get("/tweets", function(data) {
-    $tweetsArray = data;
-    callback($tweetsArray);
+    $tweetsArray = data.reverse();
+    renderTweets();
   });
 };
 
-const loadTweets = function() {
-  renderTweets($tweetsArray);
-};
-
-const loadTweet = function() {
-  const newTweet = $tweetsArray.slice(-1);
-  renderTweets(newTweet);
-};
-
-const renderTweets = function(tweets) {
-  tweets.forEach(tweet => {
+const renderTweets = function() {
+  $('.tweets-container').empty();
+  $tweetsArray.forEach(tweet => {
     const $tweet = createTweetElement(tweet);
     $('.tweets-container').append($tweet);
   });
@@ -80,7 +72,9 @@ const createSubmitHandler = function() {
     const tweetErr = tweetErrorTest($tweet);
     if (!tweetErr) {
       $.post("/tweets", $tweet, function() {
-        getTweets(loadTweet);
+        $('#tweet-textarea').val('');
+        $('#charCounter').text('140');
+        getTweets();
       });
     }
   });
@@ -122,7 +116,7 @@ const createTweetElement = function(tweet) {
 
 
 $(document).ready(() => {
-  getTweets(loadTweets);
+  getTweets();
   createSubmitHandler();
   tweetErrorTest();
 });
